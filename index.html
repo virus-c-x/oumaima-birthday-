@@ -41,7 +41,7 @@ body{
 }
 
 #slider{
-  width:95%;          /* كبر الصور لتغطية الفراغ */
+  width:100%;          /* كبر الصور لتغطية الفراغ */
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s;
@@ -167,7 +167,7 @@ body{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:9999;
+  z-index:998;
   background:
     radial-gradient(2.5px 2.5px at 5% 10%, white, transparent),
     radial-gradient(2.5px 2.5px at 15% 30%, white, transparent),
@@ -182,6 +182,32 @@ body{
   background-size:100% 200%;
   animation:starFall 15s linear infinite;
   opacity:1;
+}
+
+/* بارتكلز بيضاء صغيرة */
+.particles{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:999;
+}
+
+.particle{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation:particleFall linear infinite;
+}
+
+@keyframes particleFall{
+  0%{transform:translateY(-10px);opacity:0.8;}
+  100%{transform:translateY(110vh);opacity:0;}
 }
 
 /* القلوب Emoji أبيض */
@@ -243,6 +269,9 @@ body{
 <!-- النجوم -->
 <div class="stars"></div>
 
+<!-- البارتكلز -->
+<div class="particles" id="particles"></div>
+
 <!-- القلوب Emoji أبيض -->
 <div class="heartEmoji" style="left:10%; animation-delay:0s;">🤍</div>
 <div class="heartEmoji" style="left:25%; animation-delay:1s;">🤍</div>
@@ -284,6 +313,18 @@ setInterval(()=>{
     slider.style.opacity=1;
   },1000);
 },3500);
+
+/* توليد البارتكلز */
+const particlesContainer = document.getElementById('particles');
+for(let j=0; j<50; j++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random()*100+'%';
+  p.style.animationDuration = 3 + Math.random()*5 + 's';
+  p.style.width = 2 + Math.random()*3 + 'px';
+  p.style.height = p.style.width;
+  particlesContainer.appendChild(p);
+}
 </script>
 
 </body>
