@@ -1,36 +1,43 @@
 const entry = document.getElementById("entry");
 const music = document.getElementById("music");
-const finalText = document.getElementById("finalText");
+const celebration = document.getElementById("celebration");
 
-function enterSite() {
+entry.addEventListener("click", () => {
   entry.style.opacity = "0";
   setTimeout(() => entry.style.display = "none", 800);
   music.play();
-}
+  startCelebration();
+});
 
-function finalGift() {
-  finalText.style.opacity = "1";
+function startCelebration() {
+  const emojis = ["🤍","🎉","🎂","💖","✨"];
+  for (let i = 0; i < 50; i++) {
+    const span = document.createElement("div");
+    span.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    span.style.left = Math.random()*100+"vw";
+    span.style.top = Math.random()*100+"vh";
+    span.style.fontSize = (15 + Math.random()*25) + "px";
+    span.style.position = "fixed";
+    span.style.pointerEvents = "none";
+    span.style.animation = `floatUp ${3 + Math.random()*3}s linear infinite`;
+    celebration.appendChild(span);
 
-  for (let i = 0; i < 25; i++) {
-    const heart = document.createElement("div");
-    heart.innerHTML = "🤍";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
-    heart.style.fontSize = "22px";
-    heart.style.animation = "floatUp 4s ease forwards";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
+    setTimeout(()=>span.remove(),8000);
   }
-}
 
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes floatUp {
-  to {
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
-}`;
-document.head.appendChild(style);
+  // Repeat every few seconds
+  setInterval(()=>{
+    for(let i=0;i<15;i++){
+      const span = document.createElement("div");
+      span.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+      span.style.left = Math.random()*100+"vw";
+      span.style.top = Math.random()*100+"vh";
+      span.style.fontSize = (15 + Math.random()*25) + "px";
+      span.style.position = "fixed";
+      span.style.pointerEvents = "none";
+      span.style.animation = `floatUp ${3 + Math.random()*3}s linear infinite`;
+      celebration.appendChild(span);
+      setTimeout(()=>span.remove(),8000);
+    }
+  },2000);
+}
