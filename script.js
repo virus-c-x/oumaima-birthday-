@@ -1,52 +1,42 @@
-// DOM elements
-const entryCard = document.getElementById('entryCard');
-const mainContent = document.getElementById('mainContent');
-const bgMusic = document.getElementById('bgMusic');
+const entry = document.getElementById("entry");
+const openBtn = document.getElementById("openBtn");
+const music = document.getElementById("music");
+const celebration = document.getElementById("celebration");
+const slider = document.getElementById("memorySlider");
 
-// Entry card click
-entryCard.addEventListener('click', () => {
-    entryCard.style.display = 'none';
-    mainContent.style.display = 'flex';
-    bgMusic.play();
-    startConfetti();
+// فتح البطاقة وتشغيل الموسيقى
+openBtn.addEventListener("click", () => {
+  entry.style.opacity = "0";
+  setTimeout(()=>entry.style.display="none",800);
+  music.play();
+  startCelebration();
+  cloneSlider();
 });
 
-// Slider
-const slides = document.querySelector('.slides');
-const images = slides.querySelectorAll('img');
-let currentIndex = 0;
-
-document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex+1) % images.length;
-    updateSlider();
-});
-
-document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex-1+images.length) % images.length;
-    updateSlider();
-});
-
-function updateSlider() {
-    slides.style.transform = `translateX(-${currentIndex*100}%)`;
+// Memory Slider سلس ومتكرر
+function cloneSlider(){
+  const imgs = Array.from(slider.children);
+  imgs.forEach(img=>{
+    const clone = img.cloneNode(true);
+    slider.appendChild(clone);
+  });
 }
 
-// Auto slide
-setInterval(() => {
-    currentIndex = (currentIndex+1) % images.length;
-    updateSlider();
-}, 4000);
-
-// Confetti animation
-function startConfetti() {
-    const colors = ['#ff0','#f0f','#0ff','#f00','#0f0','#00f','#ff8800'];
-    setInterval(() => {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.left = Math.random()*100 + 'vw';
-        confetti.style.background = colors[Math.floor(Math.random()*colors.length)];
-        confetti.style.width = confetti.style.height = Math.random()*10+5+'px';
-        confetti.style.animationDuration = Math.random()*3+2+'s';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-    }, 100);
+// Celebration Effects من الأعلى
+function startCelebration(){
+  const emojis = ["🤍","🎉","🎂","💖","✨"];
+  function createEmoji(){
+    const span = document.createElement("div");
+    span.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    span.style.left = Math.random()*100+"vw";
+    span.style.top = "-10vh";
+    span.style.fontSize = (15+Math.random()*25)+"px";
+    span.style.position="fixed";
+    span.style.pointerEvents="none";
+    span.style.animation = `fallDown ${6 + Math.random()*4}s linear forwards`;
+    celebration.appendChild(span);
+    setTimeout(()=>span.remove(),10000);
+  }
+  for(let i=0;i<20;i++){ createEmoji(); }
+  setInterval(()=>{for(let i=0;i<10;i++){ createEmoji(); }},3000);
 }
