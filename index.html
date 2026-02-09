@@ -1,14 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gift</title>
-
-<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
+<style>
+body{
+  margin:0;
+  font-family:Poppins;
+  overflow:hidden;
+  background:black;
+}
 
+/* الصفحة الثانية */
+#page2{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+.topImg,.bottomImg{
+  height:40vh;
+}
+
+.topImg img,.bottomImg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* الشريط الأوسط */
+.middleBar{
+  height:20vh;
+  overflow:hidden;
+}
+
+#slider{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:opacity 1s;
+}
+
+/* الرسالة */
+.message{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:230px;
+  padding:15px;
+  text-align:center;
+  color:white;
+  font-size:12px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  z-index:5;
+  animation:textGlow 2.5s infinite alternate;
+}
+
+@keyframes textGlow{
+  from{
+    text-shadow:0 0 5px rgba(255,255,255,0.3),0 0 10px rgba(255,255,255,0.2);
+  }
+  to{
+    text-shadow:0 0 12px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);
+  }
+}
+
+/* اضاءة البوردر بدون تغطية النص */
+.message::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  padding:2px;
+  background:linear-gradient(120deg, transparent, white, transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  animation:borderLight 3s linear infinite;
+  pointer-events:none;
+  z-index:-1;
+}
+
+@keyframes borderLight{
+  from{background-position:0%;}
+  to{background-position:300%;}
+}
+
+.message h3{
+  margin:5px 0 10px;
+  font-weight:600;
+}
+
+/* البلور */
+#glassPage{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+  transition:0.7s;
+}
+
+.glassBox{
+  width:300px;
+  height:300px;
+  border-radius:30px;
+  overflow:hidden;
+  position:relative;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+}
+
+.glassBox img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.5;
+}
+
+#giftBtn{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:200px;
+  height:50px;
+  border:none;
+  border-radius:15px;
+  background:rgba(255,255,255,0.4);
+  backdrop-filter:blur(10px);
+  cursor:pointer;
+  font-size:16px;
+}
+
+.hide{
+  opacity:0;
+  transform:scale(1.2);
+}
+
+/* ⭐ نجوم متحركة */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+  background:
+    radial-gradient(2px 2px at 10% 10%, white, transparent),
+    radial-gradient(2px 2px at 30% 40%, white, transparent),
+    radial-gradient(1.5px 1.5px at 50% 70%, white, transparent),
+    radial-gradient(2px 2px at 70% 20%, white, transparent),
+    radial-gradient(1.5px 1.5px at 90% 60%, white, transparent);
+  background-size:100% 200%;
+  animation:starFall 15s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes starFall{
+  from{background-position:0 0;}
+  to{background-position:0 100%;}
+}
+</style>
+</head>
 <body>
 
 <audio id="music" src="music.mp3" loop></audio>
@@ -47,6 +208,40 @@ happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o
 <!-- النجوم -->
 <div class="stars"></div>
 
-<script src="script.js"></script>
+<script>
+const btn=document.getElementById("giftBtn");
+const glass=document.getElementById("glassPage");
+const music=document.getElementById("music");
+
+btn.onclick=()=>{
+  music.play();
+  glass.classList.add("hide");
+  setTimeout(()=>{glass.style.display="none";},700);
+}
+
+/* سلايدر */
+const imgs=[
+"slider1.png",
+"slider2.png",
+"slider3.png",
+"slider4.png",
+"slider5.png",
+"slider6.png",
+"slider7.png"
+];
+
+let i=0;
+const slider=document.getElementById("slider");
+
+setInterval(()=>{
+  slider.style.opacity=0;
+  setTimeout(()=>{
+    i=(i+1)%imgs.length;
+    slider.src=imgs[i];
+    slider.style.opacity=1;
+  },500);
+},2500);
+</script>
+
 </body>
 </html>
