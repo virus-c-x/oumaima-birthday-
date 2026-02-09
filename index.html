@@ -15,10 +15,9 @@ body{
 
 /* الصفحة الثانية */
 #page2{
-  display:flex;
-  flex-direction:column;
   position:relative;
   width:100%;
+  min-height:100vh;
 }
 
 /* الصور الأولى والثانية */
@@ -26,7 +25,21 @@ body{
   width:100%;
 }
 
-.topImg img, .bottomImg img{
+.topImg{
+  position:absolute;
+  top:0; /* بدون أي فراغ */
+  left:0;
+  z-index:1;
+}
+
+.topImg img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+}
+
+.bottomImg img{
   width:100%;
   height:auto;
   display:block;
@@ -35,13 +48,14 @@ body{
 
 /* الشريط الأوسط - الصور المتلاشية */
 .middleBar{
-  height:25vh; /* أخفف القياس */
-  overflow:hidden;
   position:relative;
+  height:25vh;
+  overflow:hidden;
+  margin-top:50vh; /* لتكون أسفل topImage */
 }
 
 #slider{
-  width:70%;          /* أصغر قليلاً */
+  width:70%;
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s;
@@ -51,18 +65,18 @@ body{
 /* الرسالة الكبيرة فوق الصور المتلاشية */
 .message{
   position:absolute;
-  top:42%;             /* بين أسفل الصورة الأولى وفوق الصورة الثانية */
+  top:45%; /* مكان الرسالة محفوظ */
   left:50%;
-  transform:translate(-50%,-50%);
-  width:80%;           /* تغطي نسبة كبيرة */
-  max-width:600px;
-  padding:40px;
+  transform:translate(-50%, -50%);
+  width:90%;           /* تغطي نسبة كبيرة */
+  max-width:800px;
+  padding:60px;        /* حجم أكبر */
   text-align:center;
   color:white;
-  font-size:20px;
+  font-size:28px;      /* حجم أكبر */
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
-  border-radius:25px;
+  border-radius:30px;
   z-index:5;
   animation:textGlow 2.5s infinite alternate;
 }
@@ -71,7 +85,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:25px;
+  border-radius:30px;
   padding:2px;
   background:linear-gradient(120deg, transparent, white, transparent);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -84,7 +98,7 @@ body{
 
 @keyframes textGlow{
   from{ text-shadow:0 0 5px rgba(255,255,255,0.3),0 0 10px rgba(255,255,255,0.2);}
-  to{ text-shadow:0 0 12px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);}
+  to{ text-shadow:0 0 15px rgba(255,255,255,0.7),0 0 25px rgba(255,255,255,0.5);}
 }
 
 @keyframes borderLight{
@@ -183,25 +197,6 @@ body{
   from{background-position:0 0;}
   to{background-position:0 100%;}
 }
-
-/* ❤️ قلوب زجاجية تتحرك من الأعلى للأسفل */
-.heart{
-  position:absolute;
-  width:60px;
-  height:60px;
-  border-radius:25px;
-  background:rgba(255,0,0,0.15);
-  backdrop-filter:blur(10px);
-  border:2px solid rgba(255,255,255,0.6);
-  top:-60px;
-  animation:heartFall 6s linear infinite;
-  z-index:6;
-}
-
-@keyframes heartFall{
-  0%{transform:translateY(0) rotate(-45deg);}
-  100%{transform:translateY(120vh) rotate(-45deg);}
-}
 </style>
 </head>
 <body>
@@ -242,13 +237,6 @@ happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o
 <!-- النجوم -->
 <div class="stars"></div>
 
-<!-- القلوب الزجاجية المتحركة -->
-<div class="heart" style="left:10%; animation-delay:0s;"></div>
-<div class="heart" style="left:30%; animation-delay:1s;"></div>
-<div class="heart" style="left:50%; animation-delay:2s;"></div>
-<div class="heart" style="left:70%; animation-delay:3s;"></div>
-<div class="heart" style="left:85%; animation-delay:4s;"></div>
-
 <script>
 const btn=document.getElementById("giftBtn");
 const glass=document.getElementById("glassPage");
@@ -280,7 +268,7 @@ setInterval(()=>{
     i=(i+1)%imgs.length;
     slider.src=imgs[i];
     slider.style.opacity=1;
-  },1000); /* تلاشي أبطأ */
+  },1200); /* تلاشي أبطأ */
 },3500);
 </script>
 
