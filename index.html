@@ -35,13 +35,13 @@ body{
 
 /* الشريط الأوسط - الصور المتلاشية */
 .middleBar{
-  height:25vh; 
+  height:25vh;
   overflow:hidden;
   position:relative;
 }
 
 #slider{
-  width:70%;          
+  width:80%;          /* كبر الصور المتلاشية لتغطية الفراغ */
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s;
@@ -51,15 +51,15 @@ body{
 /* الرسالة الكبيرة فوق الصور المتلاشية */
 .message{
   position:absolute;
-  top:55%;             /* نزلت الرسالة لتغطي الصور المتلاشية */
+  top:55%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:80%;           
+  width:80%;
   max-width:600px;
-  padding:60px;        /* حجم أكبر */
+  padding:60px;
   text-align:center;
   color:white;
-  font-size:26px;      /* حجم أكبر */
+  font-size:26px;
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   border-radius:25px;
@@ -162,21 +162,31 @@ body{
   transform:scale(1.2);
 }
 
-/* النجوم */
+/* النجوم أوضح */
 .stars{
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:9999;
   background:
-    radial-gradient(2px 2px at 10% 10%, white, transparent),
-    radial-gradient(2px 2px at 30% 40%, white, transparent),
-    radial-gradient(1.5px 1.5px at 50% 70%, white, transparent),
-    radial-gradient(2px 2px at 70% 20%, white, transparent),
-    radial-gradient(1.5px 1.5px at 90% 60%, white, transparent);
+    radial-gradient(3px 3px at 10% 10%, white, transparent),
+    radial-gradient(3px 3px at 30% 40%, white, transparent),
+    radial-gradient(2px 2px at 50% 70%, white, transparent),
+    radial-gradient(3px 3px at 70% 20%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent);
   background-size:100% 200%;
   animation:starFall 15s linear infinite;
-  opacity:0.8;
+  opacity:1;
+}
+
+/* قلوب (Emoji) تسقط */
+.heartEmoji{
+  position:absolute;
+  font-size:40px;
+  top:-50px;
+  color:white;
+  animation:heartFall 6s linear infinite;
+  z-index:6;
 }
 
 @keyframes starFall{
@@ -184,23 +194,9 @@ body{
   to{background-position:0 100%;}
 }
 
-/* ❤️ القلوب الزجاجية المتحركة */
-.heart{
-  position:absolute;
-  width:60px;
-  height:60px;
-  border-radius:25px;
-  background:rgba(255,0,0,0.15);
-  backdrop-filter:blur(10px);
-  border:2px solid rgba(255,255,255,0.6);
-  top:-60px;
-  animation:heartFall 6s linear infinite;
-  z-index:6;
-}
-
 @keyframes heartFall{
-  0%{transform:translateY(0) rotate(-45deg);}
-  100%{transform:translateY(120vh) rotate(-45deg);}
+  0%{transform:translateY(0);}
+  100%{transform:translateY(120vh);}
 }
 </style>
 </head>
@@ -223,10 +219,10 @@ body{
     <img src="bottomImage.png">
   </div>
 
-  <!-- الرسالة الكبيرة بعد التعديل -->
+  <!-- الرسالة الكبيرة -->
   <div class="message">
     <h3>happy birthday oumima</h3>
-happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o kntlb rbi y7fdk lina o nxofok dima top one, o t7a9i aya haja tmanitiha o britiha nxaalah. kntmnaw mn sidi rbi y7fdk o lhla yhrmna mn dik dhika diak, o hada rir small gift fo you wakha wslk m3atal hhhhhh o slmi 3la 7asan ;)
+    happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o kntlb rbi y7fdk lina o nxofok dima top one, o t7a9i aya haja tmanitiha o britiha nxaalah. kntmnaw mn sidi rbi y7fdk o lhla yhrmna mn dik dhika diak, o hada rir small gift fo you wakha wslk m3atal hhhhhh o slmi 3la 7asan ;)
   </div>
 
 </div>
@@ -242,12 +238,13 @@ happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o
 <!-- النجوم -->
 <div class="stars"></div>
 
-<!-- القلوب الزجاجية المتحركة -->
-<div class="heart" style="left:10%; animation-delay:0s;"></div>
-<div class="heart" style="left:30%; animation-delay:1s;"></div>
-<div class="heart" style="left:50%; animation-delay:2s;"></div>
-<div class="heart" style="left:70%; animation-delay:3s;"></div>
-<div class="heart" style="left:85%; animation-delay:4s;"></div>
+<!-- القلوب Emoji -->
+<div class="heartEmoji" style="left:10%; animation-delay:0s;">❤️</div>
+<div class="heartEmoji" style="left:25%; animation-delay:1s;">❤️</div>
+<div class="heartEmoji" style="left:40%; animation-delay:2s;">❤️</div>
+<div class="heartEmoji" style="left:60%; animation-delay:3s;">❤️</div>
+<div class="heartEmoji" style="left:75%; animation-delay:4s;">❤️</div>
+<div class="heartEmoji" style="left:85%; animation-delay:5s;">❤️</div>
 
 <script>
 const btn=document.getElementById("giftBtn");
