@@ -1,42 +1,39 @@
-const entry = document.getElementById("entry");
-const openBtn = document.getElementById("openBtn");
-const music = document.getElementById("music");
-const celebration = document.getElementById("celebration");
-const slider = document.getElementById("memorySlider");
+const btn=document.getElementById("giftBtn");
+const glass=document.getElementById("glassPage");
+const music=document.getElementById("music");
 
-// فتح البطاقة وتشغيل الموسيقى
-openBtn.addEventListener("click", () => {
-  entry.style.opacity = "0";
-  setTimeout(()=>entry.style.display="none",800);
+btn.onclick=()=>{
+
   music.play();
-  startCelebration();
-  cloneSlider();
-});
 
-// Memory Slider سلس ومتكرر
-function cloneSlider(){
-  const imgs = Array.from(slider.children);
-  imgs.forEach(img=>{
-    const clone = img.cloneNode(true);
-    slider.appendChild(clone);
-  });
+  glass.classList.add("hide");
+
+  setTimeout(()=>{
+    glass.style.display="none";
+  },700);
 }
 
-// Celebration Effects من الأعلى
-function startCelebration(){
-  const emojis = ["🤍","🎉","🎂","💖","✨"];
-  function createEmoji(){
-    const span = document.createElement("div");
-    span.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
-    span.style.left = Math.random()*100+"vw";
-    span.style.top = "-10vh";
-    span.style.fontSize = (15+Math.random()*25)+"px";
-    span.style.position="fixed";
-    span.style.pointerEvents="none";
-    span.style.animation = `fallDown ${6 + Math.random()*4}s linear forwards`;
-    celebration.appendChild(span);
-    setTimeout(()=>span.remove(),10000);
-  }
-  for(let i=0;i<20;i++){ createEmoji(); }
-  setInterval(()=>{for(let i=0;i<10;i++){ createEmoji(); }},3000);
-}
+/* سلايدر */
+const imgs=[
+"slider1.png",
+"slider2.png",
+"slider3.png",
+"slider4.png",
+"slider5.png",
+"slider6.png",
+"slider7.png"
+];
+
+let i=0;
+const slider=document.getElementById("slider");
+
+setInterval(()=>{
+  slider.style.opacity=0;
+
+  setTimeout(()=>{
+    i=(i+1)%imgs.length;
+    slider.src=imgs[i];
+    slider.style.opacity=1;
+  },500);
+
+},2500);
