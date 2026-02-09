@@ -50,12 +50,13 @@ body {font-family:'Poppins',sans-serif; overflow-x:hidden; background:#fff7f9;}
 /* Memory Slider */
 .memory-slider {
   position:absolute; bottom:140px; left:0; display:flex; gap:25px;
-  width:200%; animation: slider 80s linear infinite;
+  width:250%; animation: slider 100s linear infinite;
 }
 .memory-slider img {
   width:200px; border-radius:25px; transition: transform 0.4s ease, box-shadow 0.4s ease;
+  filter: drop-shadow(0 10px 20px rgba(212,175,55,0.5));
 }
-.memory-slider img:hover {transform:scale(1.08); box-shadow:0 25px 50px rgba(212,175,55,0.5);}
+.memory-slider img:hover {transform:scale(1.1);}
 
 /* Celebration Effects */
 .celebration div {position:fixed;font-size:20px; pointer-events:none; animation:fallDown linear forwards;}
@@ -66,7 +67,7 @@ body {font-family:'Poppins',sans-serif; overflow-x:hidden; background:#fff7f9;}
 @keyframes slider {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @keyframes fallDown {0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);}}
 
-/* Responsive */
+/* Optional smaller screens */
 @media (max-width:768px){
   .entry-img{width:140px;height:140px;}
   #openBtn{padding:12px 30px;}
