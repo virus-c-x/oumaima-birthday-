@@ -41,7 +41,7 @@ body{
 }
 
 #slider{
-  width:80%;          /* كبر الصور المتلاشية لتغطية الفراغ */
+  width:95%;          /* كبر الصور لتغطية الفراغ */
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s;
@@ -162,29 +162,34 @@ body{
   transform:scale(1.2);
 }
 
-/* النجوم أوضح */
+/* النجوم واضح ومتألق */
 .stars{
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:9999;
   background:
-    radial-gradient(3px 3px at 10% 10%, white, transparent),
-    radial-gradient(3px 3px at 30% 40%, white, transparent),
-    radial-gradient(2px 2px at 50% 70%, white, transparent),
-    radial-gradient(3px 3px at 70% 20%, white, transparent),
-    radial-gradient(2px 2px at 90% 60%, white, transparent);
+    radial-gradient(2.5px 2.5px at 5% 10%, white, transparent),
+    radial-gradient(2.5px 2.5px at 15% 30%, white, transparent),
+    radial-gradient(2px 2px at 25% 50%, white, transparent),
+    radial-gradient(2.5px 2.5px at 35% 70%, white, transparent),
+    radial-gradient(3px 3px at 45% 20%, white, transparent),
+    radial-gradient(2px 2px at 55% 40%, white, transparent),
+    radial-gradient(2.5px 2.5px at 65% 60%, white, transparent),
+    radial-gradient(2px 2px at 75% 80%, white, transparent),
+    radial-gradient(2px 2px at 85% 50%, white, transparent),
+    radial-gradient(2px 2px at 95% 30%, white, transparent);
   background-size:100% 200%;
   animation:starFall 15s linear infinite;
   opacity:1;
 }
 
-/* قلوب (Emoji) تسقط */
+/* القلوب Emoji أبيض */
 .heartEmoji{
   position:absolute;
   font-size:40px;
   top:-50px;
-  color:white;
+  color:white;      
   animation:heartFall 6s linear infinite;
   z-index:6;
 }
@@ -238,13 +243,13 @@ body{
 <!-- النجوم -->
 <div class="stars"></div>
 
-<!-- القلوب Emoji -->
-<div class="heartEmoji" style="left:10%; animation-delay:0s;">❤️</div>
-<div class="heartEmoji" style="left:25%; animation-delay:1s;">❤️</div>
-<div class="heartEmoji" style="left:40%; animation-delay:2s;">❤️</div>
-<div class="heartEmoji" style="left:60%; animation-delay:3s;">❤️</div>
-<div class="heartEmoji" style="left:75%; animation-delay:4s;">❤️</div>
-<div class="heartEmoji" style="left:85%; animation-delay:5s;">❤️</div>
+<!-- القلوب Emoji أبيض -->
+<div class="heartEmoji" style="left:10%; animation-delay:0s;">🤍</div>
+<div class="heartEmoji" style="left:25%; animation-delay:1s;">🤍</div>
+<div class="heartEmoji" style="left:40%; animation-delay:2s;">🤍</div>
+<div class="heartEmoji" style="left:60%; animation-delay:3s;">🤍</div>
+<div class="heartEmoji" style="left:75%; animation-delay:4s;">🤍</div>
+<div class="heartEmoji" style="left:85%; animation-delay:5s;">🤍</div>
 
 <script>
 const btn=document.getElementById("giftBtn");
