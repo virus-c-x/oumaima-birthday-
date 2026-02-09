@@ -9,26 +9,28 @@
 body{
   margin:0;
   font-family:Poppins;
-  overflow:hidden;
+  overflow-x:hidden;
   background:black;
 }
 
 /* الصفحة الثانية */
 #page2{
-  height:100vh;
   display:flex;
   flex-direction:column;
   position:relative;
-}
-
-.topImg,.bottomImg{
-  height:40vh;
-}
-
-.topImg img,.bottomImg img{
   width:100%;
-  height:100%;
-  object-fit:contain; /* الآن الصورة كاملة بدون قص */
+}
+
+/* تكبير الصور الأولى والثانية */
+.topImg, .bottomImg{
+  width:100%;
+}
+
+.topImg img, .bottomImg img{
+  width:100%;
+  height:auto;      /* السماح للارتفاع التكيف تلقائيًا */
+  display:block;
+  object-fit:cover; /* يغطي العرض بالكامل */
 }
 
 /* الشريط الأوسط */
@@ -44,17 +46,17 @@ body{
   transition:opacity 1s;
 }
 
-/* الرسالة */
+/* الرسالة أكبر */
 .message{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:260px;  /* تكبير العرض */
-  padding:18px; /* زيادة البادينغ */
+  width:320px;     /* أكبر عرض */
+  padding:25px;    /* زيادة الحشو */
   text-align:center;
   color:white;
-  font-size:14px; /* تكبير الخط */
+  font-size:16px;  /* تكبير الخط */
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   border-radius:18px;
