@@ -15,9 +15,10 @@ body{
 
 /* الصفحة الثانية */
 #page2{
+  display:flex;
+  flex-direction:column;
   position:relative;
   width:100%;
-  min-height:100vh;
 }
 
 /* الصور الأولى والثانية */
@@ -25,21 +26,7 @@ body{
   width:100%;
 }
 
-.topImg{
-  position:absolute;
-  top:0; /* بدون أي فراغ */
-  left:0;
-  z-index:1;
-}
-
-.topImg img{
-  width:100%;
-  height:auto;
-  display:block;
-  object-fit:cover;
-}
-
-.bottomImg img{
+.topImg img, .bottomImg img{
   width:100%;
   height:auto;
   display:block;
@@ -48,14 +35,13 @@ body{
 
 /* الشريط الأوسط - الصور المتلاشية */
 .middleBar{
-  position:relative;
-  height:25vh;
+  height:25vh; 
   overflow:hidden;
-  margin-top:50vh; /* لتكون أسفل topImage */
+  position:relative;
 }
 
 #slider{
-  width:70%;
+  width:70%;          
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s;
@@ -65,18 +51,18 @@ body{
 /* الرسالة الكبيرة فوق الصور المتلاشية */
 .message{
   position:absolute;
-  top:45%; /* مكان الرسالة محفوظ */
+  top:55%;             /* نزلت الرسالة لتغطي الصور المتلاشية */
   left:50%;
-  transform:translate(-50%, -50%);
-  width:90%;           /* تغطي نسبة كبيرة */
-  max-width:800px;
+  transform:translate(-50%,-50%);
+  width:80%;           
+  max-width:600px;
   padding:60px;        /* حجم أكبر */
   text-align:center;
   color:white;
-  font-size:28px;      /* حجم أكبر */
+  font-size:26px;      /* حجم أكبر */
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
-  border-radius:30px;
+  border-radius:25px;
   z-index:5;
   animation:textGlow 2.5s infinite alternate;
 }
@@ -85,7 +71,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:30px;
+  border-radius:25px;
   padding:2px;
   background:linear-gradient(120deg, transparent, white, transparent);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -98,7 +84,7 @@ body{
 
 @keyframes textGlow{
   from{ text-shadow:0 0 5px rgba(255,255,255,0.3),0 0 10px rgba(255,255,255,0.2);}
-  to{ text-shadow:0 0 15px rgba(255,255,255,0.7),0 0 25px rgba(255,255,255,0.5);}
+  to{ text-shadow:0 0 12px rgba(255,255,255,0.7),0 0 20px rgba(255,255,255,0.5);}
 }
 
 @keyframes borderLight{
@@ -197,6 +183,25 @@ body{
   from{background-position:0 0;}
   to{background-position:0 100%;}
 }
+
+/* ❤️ القلوب الزجاجية المتحركة */
+.heart{
+  position:absolute;
+  width:60px;
+  height:60px;
+  border-radius:25px;
+  background:rgba(255,0,0,0.15);
+  backdrop-filter:blur(10px);
+  border:2px solid rgba(255,255,255,0.6);
+  top:-60px;
+  animation:heartFall 6s linear infinite;
+  z-index:6;
+}
+
+@keyframes heartFall{
+  0%{transform:translateY(0) rotate(-45deg);}
+  100%{transform:translateY(120vh) rotate(-45deg);}
+}
 </style>
 </head>
 <body>
@@ -218,7 +223,7 @@ body{
     <img src="bottomImage.png">
   </div>
 
-  <!-- الرسالة الكبيرة -->
+  <!-- الرسالة الكبيرة بعد التعديل -->
   <div class="message">
     <h3>happy birthday oumima</h3>
 happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o kntlb rbi y7fdk lina o nxofok dima top one, o t7a9i aya haja tmanitiha o britiha nxaalah. kntmnaw mn sidi rbi y7fdk o lhla yhrmna mn dik dhika diak, o hada rir small gift fo you wakha wslk m3atal hhhhhh o slmi 3la 7asan ;)
@@ -236,6 +241,13 @@ happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o
 
 <!-- النجوم -->
 <div class="stars"></div>
+
+<!-- القلوب الزجاجية المتحركة -->
+<div class="heart" style="left:10%; animation-delay:0s;"></div>
+<div class="heart" style="left:30%; animation-delay:1s;"></div>
+<div class="heart" style="left:50%; animation-delay:2s;"></div>
+<div class="heart" style="left:70%; animation-delay:3s;"></div>
+<div class="heart" style="left:85%; animation-delay:4s;"></div>
 
 <script>
 const btn=document.getElementById("giftBtn");
@@ -268,7 +280,7 @@ setInterval(()=>{
     i=(i+1)%imgs.length;
     slider.src=imgs[i];
     slider.style.opacity=1;
-  },1200); /* تلاشي أبطأ */
+  },1000);
 },3500);
 </script>
 
