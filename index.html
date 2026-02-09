@@ -130,21 +130,21 @@ body{
   height:100%;
   object-fit:cover;
   transition:opacity 1.5s, transform 1.5s;
-  margin-left:5%;
+  margin-left:5%; /* لتملأ الفراغات */
 }
 
 /* الرسالة الكبيرة */
 .message{
   position:absolute;
-  top:35%;
+  top:50%;  /* نزلناها لتغطي الصور المتلاشية */
   left:50%;
   transform:translateX(-50%);
   width:85%;
-  max-width:700px;
-  padding:50px;
+  max-width:750px;
+  padding:60px; /* حجم أكبر */
   text-align:center;
   color:white;
-  font-size:22px;
+  font-size:26px; /* حجم أكبر */
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   border-radius:30px;
