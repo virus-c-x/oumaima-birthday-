@@ -21,16 +21,16 @@ body{
   width:100%;
 }
 
-/* تكبير الصور الأولى والثانية */
+/* الصور الأولى والثانية */
 .topImg, .bottomImg{
   width:100%;
 }
 
 .topImg img, .bottomImg img{
   width:100%;
-  height:auto;      /* السماح للارتفاع التكيف تلقائيًا */
+  height:auto;
   display:block;
-  object-fit:cover; /* يغطي العرض بالكامل */
+  object-fit:cover;
 }
 
 /* الشريط الأوسط */
@@ -40,23 +40,24 @@ body{
 }
 
 #slider{
-  width:100%;
+  width:80%;       /* تصغير الصور قليلاً */
   height:100%;
   object-fit:cover;
-  transition:opacity 1s;
+  transition:opacity 1.5s;  /* تلاشي أبطأ */
+  margin:0 auto;
 }
 
-/* الرسالة أكبر */
+/* الرسالة أكبر ومركزها فوق الصور المتلاشية */
 .message{
   position:absolute;
-  top:50%;
+  top:45%;           /* فوق السلايدر */
   left:50%;
   transform:translate(-50%,-50%);
-  width:320px;     /* أكبر عرض */
-  padding:25px;    /* زيادة الحشو */
+  width:360px;       /* تكبير الرسالة */
+  padding:30px;
   text-align:center;
   color:white;
-  font-size:16px;  /* تكبير الخط */
+  font-size:18px;
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   border-radius:18px;
@@ -73,7 +74,6 @@ body{
   }
 }
 
-/* اضاءة البوردر للرسالة */
 .message::before{
   content:"";
   position:absolute;
@@ -113,8 +113,8 @@ body{
 }
 
 .glassBox{
-  width:400px;  /* تكبير البطاقة */
-  height:400px; /* تكبير البطاقة */
+  width:400px;
+  height:400px;
   border-radius:30px;
   overflow:hidden;
   position:relative;
@@ -122,7 +122,6 @@ body{
   backdrop-filter:blur(12px);
 }
 
-/* اضاءة البوردر للبطاقة */
 .glassBox::before{
   content:"";
   position:absolute;
@@ -165,7 +164,7 @@ body{
   transform:scale(1.2);
 }
 
-/* ⭐ نجوم متحركة */
+/* النجوم */
 .stars{
   position:fixed;
   inset:0;
@@ -185,6 +184,48 @@ body{
 @keyframes starFall{
   from{background-position:0 0;}
   to{background-position:0 100%;}
+}
+
+/* ❤️ قلوب متحركة */
+.heart{
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:rgba(255,0,0,0.3);
+  transform:rotate(-45deg);
+  border-radius:50%;
+  top:10%;
+  left:20%;
+  z-index:6;
+  animation:heartMove 5s ease-in-out infinite alternate;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  backdrop-filter:blur(10px);
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:rgba(255,0,0,0.3);
+  border-radius:50%;
+}
+
+.heart::before{
+  top:-30px;
+}
+
+.heart::after{
+  left:30px;
+}
+
+@keyframes heartMove{
+  0%{transform:translate(0,0) rotate(-45deg);}
+  50%{transform:translate(20px,20px) rotate(-45deg);}
+  100%{transform:translate(0,40px) rotate(-45deg);}
 }
 </style>
 </head>
@@ -226,6 +267,11 @@ happy birthday a7sn bnt 3ami fhad dnya o l3o9ba l 100ans bax matmaniti nxaalah o
 <!-- النجوم -->
 <div class="stars"></div>
 
+<!-- القلوب -->
+<div class="heart" style="top:15%; left:15%;"></div>
+<div class="heart" style="top:20%; left:50%; animation-delay:1s;"></div>
+<div class="heart" style="top:10%; left:75%; animation-delay:2s;"></div>
+
 <script>
 const btn=document.getElementById("giftBtn");
 const glass=document.getElementById("glassPage");
@@ -257,8 +303,8 @@ setInterval(()=>{
     i=(i+1)%imgs.length;
     slider.src=imgs[i];
     slider.style.opacity=1;
-  },500);
-},2500);
+  },800); /* تلاشي أبطأ */
+},3000);
 </script>
 
 </body>
