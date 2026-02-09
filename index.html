@@ -2,39 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Oumima 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Entry Card -->
-<div id="entryCard">
-    <div class="card-content">
-        <h2>Click to Enter 🎉</h2>
-    </div>
+<!-- ENTRY CARD -->
+<div class="entry" id="entry">
+  <div class="entry-card">
+    <img src="oumima2.jpg" alt="Oumima" class="entry-img">
+    <h1>Happy Birthday 🤍</h1>
+    <p>A simple gift for you, just for you 🎁</p>
+    <button id="openBtn">Open Your Gift ✨</button>
+  </div>
 </div>
 
-<!-- Main Content -->
-<div id="mainContent">
-    <h1>Happy Birthday Oumima 🥳</h1>
-    <div class="slider">
-        <div class="slides">
-            <img src="oumima1.jpg" alt="">
-            <img src="oumima2.jpg" alt="">
-            <img src="oumima3.jpg" alt="">
-            <img src="oumima4.jpg" alt="">
-            <img src="oumima5.jpg" alt="">
-            <img src="oumima6.jpg" alt="">
-            <img src="oumima7.jpg" alt="">
-        </div>
-        <button class="slider-btn prev">&#10094;</button>
-        <button class="slider-btn next">&#10095;</button>
-    </div>
-</div>
+<audio id="music" src="music.mp3" loop></audio>
 
-<!-- Music -->
-<audio id="bgMusic" src="music.mp3" loop></audio>
+<!-- HERO BACKGROUND -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <!-- Center Birthday Message -->
+  <div class="center-message">
+    <h2>Happy Birthday Oumima!</h2>
+    <p>This little website is a special gift for you 🎁</p>
+  </div>
+
+  <!-- Glass Message at Bottom -->
+  <div class="message-glass">
+    <p>
+      Every year, you become more beautiful — not just in looks, but in soul.<br><br>
+      You are not simply my cousin, you are someone truly special to my heart.<br><br>
+      I made this website as a small gift,<br>
+      a simple way to show how much I love and appreciate you.
+    </p>
+  </div>
+
+  <!-- Memory Slider -->
+  <div class="memory-slider" id="memorySlider">
+    <img src="oumima1.jpg">
+    <img src="oumima2.jpg">
+    <img src="oumima3.jpg">
+    <img src="oumima4.jpg">
+    <img src="oumima5.jpg">
+    <img src="oumima6.jpg">
+    <img src="oumima7.jpg">
+  </div>
+</section>
+
+<!-- Celebration Effects -->
+<div class="celebration" id="celebration"></div>
 
 <script src="script.js"></script>
 </body>
