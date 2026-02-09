@@ -1,18 +1,23 @@
-const music = document.getElementById("bgMusic");
-const message = document.getElementById("giftMessage");
+const entry = document.getElementById("entry");
+const music = document.getElementById("music");
+const finalText = document.getElementById("finalText");
 
-function openGift() {
-  message.style.display = "block";
+function enterSite() {
+  entry.style.opacity = "0";
+  setTimeout(() => entry.style.display = "none", 800);
   music.play();
+}
 
-  // Confetti effect (simple)
-  for (let i = 0; i < 30; i++) {
+function finalGift() {
+  finalText.style.opacity = "1";
+
+  for (let i = 0; i < 25; i++) {
     const heart = document.createElement("div");
     heart.innerHTML = "🤍";
     heart.style.position = "fixed";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.top = "100vh";
-    heart.style.fontSize = "20px";
+    heart.style.fontSize = "22px";
     heart.style.animation = "floatUp 4s ease forwards";
     document.body.appendChild(heart);
 
