@@ -28,7 +28,7 @@ body{
 .topImg img,.bottomImg img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain; /* الآن الصورة كاملة بدون قص */
 }
 
 /* الشريط الأوسط */
@@ -50,11 +50,11 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:230px;
-  padding:15px;
+  width:260px;  /* تكبير العرض */
+  padding:18px; /* زيادة البادينغ */
   text-align:center;
   color:white;
-  font-size:12px;
+  font-size:14px; /* تكبير الخط */
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
   border-radius:18px;
@@ -71,7 +71,7 @@ body{
   }
 }
 
-/* اضاءة البوردر بدون تغطية النص */
+/* اضاءة البوردر للرسالة */
 .message::before{
   content:"";
   position:absolute;
@@ -111,13 +111,29 @@ body{
 }
 
 .glassBox{
-  width:300px;
-  height:300px;
+  width:400px;  /* تكبير البطاقة */
+  height:400px; /* تكبير البطاقة */
   border-radius:30px;
   overflow:hidden;
   position:relative;
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(12px);
+}
+
+/* اضاءة البوردر للبطاقة */
+.glassBox::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:30px;
+  padding:2px;
+  background:linear-gradient(120deg, transparent, white, transparent);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  animation:borderLight 3s linear infinite;
+  pointer-events:none;
+  z-index:1;
 }
 
 .glassBox img{
