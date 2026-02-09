@@ -5,9 +5,7 @@
   <title>Happy Birthday 🤍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,17 +15,17 @@
   <div class="entry-card">
     <img src="oumima2.jpg" alt="Oumima" class="entry-img">
     <h1>Happy Birthday 🤍</h1>
-    <p>Click anywhere to open your gift ✨</p>
+    <button class="open-btn" id="openBtn">Open Your Gift 🎁</button>
   </div>
 </div>
 
 <audio id="music" src="music.mp3" loop></audio>
 
-<!-- HERO BACKGROUND -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-overlay"></div>
   
-  <!-- MESSAGE GLASS -->
+  <!-- GLASS MESSAGE -->
   <div class="message-glass">
     <p>
       Every year, you become more beautiful — not just in looks, but in soul.<br><br>
@@ -38,7 +36,7 @@
   </div>
   
   <!-- MEMORY SLIDER -->
-  <div class="memory-slider">
+  <div class="memory-slider" id="memorySlider">
     <img src="oumima1.jpg">
     <img src="oumima2.jpg">
     <img src="oumima3.jpg">
